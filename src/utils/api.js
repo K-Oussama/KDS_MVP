@@ -113,10 +113,8 @@ async function searchJobExecutions(accessToken) {
   return JobExecutions.data;
 }
 
-async function searchOrder(accessToken) {
-  var shop = "RefArch";
-  var email = "contact@korchi.me"
-  const JobExecutions = await axios.post(`${import.meta.env.VITE_COMMERCE_CLOUD_HOST}/s/${shop}/dw/shop/v23_2/order_search`,
+async function searchOrdersByEmail(accessToken, shopId, email) {
+  const JobExecutions = await axios.post(`${import.meta.env.VITE_COMMERCE_CLOUD_HOST}/s/${shopId}/dw/shop/v23_2/order_search`,
     {
       "query": {
           "text_query": {
@@ -141,4 +139,4 @@ async function searchOrder(accessToken) {
   return JobExecutions.data;
 }
 
-export { getClientAccessToken, getCatalogs, getCatalogById, getSites, getSiteById, searchJobExecutions, searchOrder };
+export { getClientAccessToken, getCatalogs, getCatalogById, getSites, getSiteById, searchJobExecutions, searchOrdersByEmail };
