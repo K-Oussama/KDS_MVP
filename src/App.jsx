@@ -3,6 +3,9 @@ import Navbar from './components/Navbar';
 import {BrowserRouter as Router, Routes, Route } from 'react-router-dom';
 import Home from './pages/Home';
 import Catalogs from './pages/Catalogs';
+import Sites from './pages/Sites';
+import Jobs from './pages/Jobs';
+import Orders from './pages/Orders';
 
 
 function App() {
@@ -15,6 +18,9 @@ function App() {
       <Routes>
         <Route path="/" element={<Home />}/>
         <Route path="/catalogs" element={<Catalogs />} />
+        <Route path="/sites" element={<Sites />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/jobs" element={<Jobs />} />
       </Routes>
     </div>
     </Router>
