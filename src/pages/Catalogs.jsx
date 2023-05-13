@@ -1,4 +1,5 @@
 import Catalog from '../components/Catalog';
+import LoadingSpinner from '../components/LoadingSpinner';
 import { getClientAccessToken, getCatalogs, getCatalogById } from '../utils/api';
 import { useEffect, useState } from 'react';
 
@@ -33,14 +34,18 @@ function Catalogs() {
 
 
   if (catalogs.length === 0) {
-    return <div>Loading...</div>;
+    return (<LoadingSpinner />)
   }
   return (
-    <div>
-      <h1>This is Catalogs page.</h1>
+    <div className="container my-8 px-6 mx-auto">
+      <section className="mb-32 text-gray-800">
+      <h1 className="text-3xl font-bold mb-12 text-center">This is <span className="text-blue-600">Catalogs</span> page</h1>
+      <div className="grid lg:grid-cols-3 gap-6">
       {catalogs.map((catalog) => (
       <Catalog key={catalog.id} catalog={catalog} />
       ))}
+      </div>
+      </section>
     </div>
   );
 }
