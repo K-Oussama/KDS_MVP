@@ -31,6 +31,8 @@ function Sites() {
     }
   }, [SiteIds]);
 
+  console.warn('Sites', Sites)
+
   if (Sites.length === 0) {
     return <div>Loading...</div>;
   }

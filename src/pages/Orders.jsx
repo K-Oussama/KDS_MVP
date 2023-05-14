@@ -1,4 +1,5 @@
 import OrderDetail from '../components/OrderDetail';
+import Welcome from '../components/Welcome';
 import LoadingSpinner from '../components/Loadings/LoadingSpinner';
 import { getClientAccessToken, searchOrdersByEmail } from '../utils/api';
 import { useEffect, useState } from 'react';
@@ -34,7 +35,9 @@ function Orders() {
   };
   if(!validate){
     return <>
-    <div className="container my-8 px-6 mx-auto w-1/3 mt-[10vh]">
+    <div className="container my-8 px-6 mx-auto">
+    <Welcome title={"Orders"} description={"Here you can search for orders by email and store ID to find the information you need quickly and easily."}/>
+    <div className="mx-auto w-1/3 mt-[10vh]">
       <form onSubmit={handleSubmit}>
         <label htmlFor="email" className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">Customer Email</label>
         <div className="relative mb-6">
@@ -53,22 +56,35 @@ function Orders() {
         </div>
         
         <br/>
-        <button type="submit" class="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">🔍 Search</button>
+        <button type="submit" className="float-right text-white bg-blue-700 hover:bg-blue-800 focus:ring-4 focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 mr-2 mb-2 dark:bg-blue-600 dark:hover:bg-blue-700 focus:outline-none dark:focus:ring-blue-800">🔍 Search</button>
       </form>
+      </div>
       </div>
     </>
   }
 
   if (validate && orderDetails.length === 0) {
-    return (<LoadingSpinner />)
+    return (<>
+    <div className="container my-8 px-6 mx-auto">
+      <Welcome title={"Orders"} description={"Here you can search for orders by email and store ID to find the information you need quickly and easily."}/>
+      <LoadingSpinner />
+      </div>
+    </>)
   }
+  console.log(orderDetails);
   return (
-    <div>
-      <h1>This is Orders page.</h1>
-      {orderDetails.query && (<center>Orders by email : <b>{orderDetails.query.text_query.search_phrase}</b></center>)}
+    <div className="container my-8 px-6 mx-auto">
+      <Welcome title={"Orders"} description={"Here you can search for orders by email and store ID to find the information you need quickly and easily."}/>
+      {orderDetails.query && (
+          <center className="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+            <span className="w-full">Searched Orders by email : <b>{orderDetails.query.text_query.search_phrase}</b></span>
+          </center> 
+      )}
+      <div className="grid lg:grid-cols-3 gap-6">
       {orderDetails.hits.map((orderDetail) => (
       <OrderDetail key={orderDetail.data.order_no} detail={orderDetail.data} />
       ))}
+      </div>
     </div>
   );
 }

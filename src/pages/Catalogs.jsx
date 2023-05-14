@@ -1,5 +1,6 @@
 import Catalog from '../components/Catalog';
-import LoadingSpinner from '../components/LoadingSpinner';
+import Welcome from '../components/Welcome';
+import LoadingSpinner from '../components/Loadings/LoadingSpinner';
 import { getClientAccessToken, getCatalogs, getCatalogById } from '../utils/api';
 import { useEffect, useState } from 'react';
 
@@ -34,12 +35,16 @@ function Catalogs() {
 
 
   if (catalogs.length === 0) {
-    return (<LoadingSpinner />)
+    return (
+    <div className="container my-8 px-6 mx-auto">
+      <Welcome title={"Catalogs"} description={"Browse through the extensive list of catalogs and find what you're looking for."}/>
+      <LoadingSpinner />
+    </div>)
   }
   return (
     <div className="container my-8 px-6 mx-auto">
       <section className="mb-32 text-gray-800">
-      <h1 className="text-3xl font-bold mb-12 text-center">This is <span className="text-blue-600">Catalogs</span> page</h1>
+      <Welcome title={"Catalogs"} description={"Browse through the extensive list of catalogs and find what you're looking for."}/>
       <div className="grid lg:grid-cols-3 gap-6">
       {catalogs.map((catalog) => (
       <Catalog key={catalog.id} catalog={catalog} />
