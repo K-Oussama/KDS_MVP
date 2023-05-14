@@ -89,7 +89,7 @@ async function getSiteById(accessToken, id) {
   return site;
 }
 
-async function searchJobExecutions(accessToken) {
+async function searchJobExecutions(accessToken, jobId) {
   const JobExecutions = await axios.post(`${import.meta.env.VITE_COMMERCE_CLOUD_HOST}/s/-/dw/data/v23_2/job_execution_search`,
     {
       "query": {
@@ -97,7 +97,7 @@ async function searchJobExecutions(accessToken) {
             "fields": [
               "job_id"
             ],
-            "search_phrase": "ClothingCatalogXML"
+            "search_phrase": jobId
           }
         },
     },

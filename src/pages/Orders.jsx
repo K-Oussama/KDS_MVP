@@ -33,6 +33,11 @@ function Orders() {
     e.preventDefault();
     if(email && shopId){setValidate(true);}
   };
+  const handleSearchEdit = (e) => {
+    e.preventDefault();
+    setOrderDetails([]);
+    setValidate(false)
+  };
   if(!validate){
     return <>
     <div className="container my-8 px-6 mx-auto">
@@ -76,8 +81,9 @@ function Orders() {
     <div className="container my-8 px-6 mx-auto">
       <Welcome title={"Orders"} description={"Here you can search for orders by email and store ID to find the information you need quickly and easily."}/>
       {orderDetails.query && (
-          <center className="inline-flex items-center justify-center p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
+          <center className="inline-flex items-center justify-center gap-3 p-5 text-base font-medium text-gray-500 rounded-lg bg-gray-50 hover:text-gray-900 hover:bg-gray-100 dark:text-gray-400 dark:bg-gray-800 dark:hover:bg-gray-700 dark:hover:text-white">
             <span className="w-full">Searched Orders by email : <b>{orderDetails.query.text_query.search_phrase}</b></span>
+            <button type="button" onClick={handleSearchEdit} className="mt-2 py-2.5 px-5 mr-2 mb-2 text-sm font-medium text-gray-900 focus:outline-none bg-gray-100 rounded-full border border-gray-200 hover:bg-white hover:text-blue-700 focus:z-10 focus:ring-4 focus:ring-gray-200 dark:focus:ring-gray-700 dark:bg-gray-800 dark:text-gray-400 dark:border-gray-600 dark:hover:text-white dark:hover:bg-gray-700">Edit</button>
           </center> 
       )}
       <div className="grid lg:grid-cols-3 gap-6">

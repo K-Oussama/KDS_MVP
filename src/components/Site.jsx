@@ -4,7 +4,7 @@
 function Site({site}) {
     const { id, display_name, creation_date, last_modified, cartridges, storefront_status } = site;
 
-    const truncatedCartridges =cartridges.length > 50 ? cartridges.slice(0, 50) + '...' : cartridges;
+    const truncatedCartridges =cartridges.length > 60 ? cartridges.slice(0, 60) + '...' : cartridges;
 
     const createdDate = new Date(creation_date);
     const formattedCreationDate = createdDate.toLocaleDateString();
