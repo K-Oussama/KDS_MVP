@@ -6,6 +6,7 @@ import Catalogs from './pages/Catalogs';
 import Sites from './pages/Sites';
 import Jobs from './pages/Jobs';
 import Orders from './pages/Orders';
+import Logs from './pages/Logs';
 
 
 function App() {
@@ -21,6 +22,7 @@ function App() {
         <Route path="/sites" element={<Sites />} />
         <Route path="/orders" element={<Orders />} />
         <Route path="/jobs" element={<Jobs />} />
+        <Route path="/logs" element={<Logs />} />
       </Routes>
     </div>
     </Router>

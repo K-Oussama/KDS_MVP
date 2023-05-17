@@ -11,12 +11,16 @@
     "host": "vite --host"
   },
   "dependencies": {
+    "@searchkit/api": "^4.7.1",
+    "@searchkit/instantsearch-client": "^4.7.2",
     "axios": "^1.4.0",
     "crypto-js": "^4.1.1",
     "dotenv": "^16.0.3",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-router-dom": "^6.3.0"
+    "react-instantsearch-dom": "^6.40.0",
+    "react-router-dom": "^6.3.0",
+    "searchkit": "^4.7.1"
   },
   "devDependencies": {
     "@types/react": "^18.0.28",
