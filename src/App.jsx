@@ -7,6 +7,7 @@ import Sites from './pages/Sites';
 import Jobs from './pages/Jobs';
 import Orders from './pages/Orders';
 import Logs from './pages/Logs';
+import Data from './pages/Data';
 
 
 function App() {
@@ -23,6 +24,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/jobs" element={<Jobs />} />
         <Route path="/logs" element={<Logs />} />
+        <Route path="/data" element={<Data />} />
       </Routes>
     </div>
     </Router>

@@ -31,10 +31,12 @@ const Logs = () => {
        
       const searchClient = Client(sk);
   return (
-    <InstantSearch indexName={import.meta.env.VITE_ELASTIC_SEARCH_INDEX} searchClient={searchClient}>
-        <SearchBox />
-        <Hits hitComponent={HitView} />
-    </InstantSearch>
+    <div className="container my-8 px-6 mx-auto">
+      <InstantSearch indexName={import.meta.env.VITE_ELASTIC_SEARCH_INDEX} searchClient={searchClient}>
+          <SearchBox />
+          <Hits hitComponent={HitView} />
+      </InstantSearch>
+    </div>
   )
 }
 
